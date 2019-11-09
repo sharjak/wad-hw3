@@ -65,16 +65,7 @@
                 </div>
             </section>
         </section>
-        <footer>
-            <ul class="links">
-                <li>
-                    <a href="https://ois2.ut.ee/" target="_blank">OIS</a>
-                </li>
-                <li>
-                    <a href="https://courses.cs.ut.ee/" target="_blank">Courses</a>
-                </li>
-            </ul>
-        </footer>
+        <PageFooter :footerLinks="footerLinks"/>
     </main>
 </template>
 
@@ -82,17 +73,24 @@
     import PageHeader from "./components/PageHeader";
     import ProfileContainer from "./components/ProfileContainer";
     import User from "./models/User";
+    import PageFooter from "./components/PageFooter";
+    import FooterLink from "./models/FooterLink";
 
     export default {
         name: 'app',
         components: {
             PageHeader,
-            ProfileContainer
+            ProfileContainer,
+            PageFooter
         },
         data: () => {
             return {
                 title: 'Welcome to your dashboard!',
-                user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering', 2.75)
+                user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering', 2.75),
+                footerLinks: [
+                    new FooterLink('OIS', 'https://ois2.ut.ee/'),
+                    new FooterLink('Courses', 'https://courses.cs.ut.ee/')
+                ]
             }
         }
     }
@@ -116,34 +114,6 @@
         position: relative;
         min-height: 100%;
         padding-bottom: 110px;
-    }
-
-    footer {
-        padding: 30px 0;
-        background-color: #607D8B;
-        margin-top: 10px;
-        height: 100px;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
-
-    footer .links {
-        display: block;
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-        color: #acd7ff;
-        font-size: 11px;
-    }
-
-    footer .links a {
-        text-decoration: none;
-        color: #acd7ff;
-    }
-
-    footer .links a:hover {
-        text-decoration: underline;
     }
 
     #container {
