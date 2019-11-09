@@ -5,13 +5,13 @@
         </div>
         <div class="info">
             <ul>
-                <li id="name">John Doe</li>
-                <li id="birthdate">11/10/1990</li>
-                <li id="faculty">Software Engineering</li>
+                <li id="name">{{formatName(user.firstname, user.lastname)}}</li>
+                <li id="birthdate">{{formatDate(user.birthdate)}}</li>
+                <li id="faculty">{{user.faculty}}</li>
             </ul>
         </div>
         <div id="gpa">
-            <strong>2.75</strong>
+            <strong>{{user.gpa}}</strong>
         </div>
         <div class="clear-fix"></div>
     </div>
@@ -21,7 +21,15 @@
     export default {
         name: "ProfileContainer",
         props: {
-            title: String
+            user: Object
+        },
+        methods : {
+            formatName : function(firstName, lastName) {
+                return firstName + ' ' + lastName;
+            },
+            formatDate: function(date) {
+                return date.toLocaleDateString("en-US")
+            }
         }
     }
 </script>
