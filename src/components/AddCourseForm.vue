@@ -2,27 +2,45 @@
     <div>
         <button id="add-course-button" class="blue-button" @click="toggleForm()">+</button>
         <span v-if="showAddCourseForm" id="add-course">
-            <input class="input" type="text" placeholder="Course title" id="title"/>
-            <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester"/>
-            <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade"/>
-            <button class="green-button" id="save-course">Save</button>
+            <input class="input" type="text" placeholder="Course title" id="title" v-model="title"/>
+            <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester" v-model="semester"/>
+            <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade" v-model="grade"/>
+            <button class="green-button" id="save-course" @click="addNewCourse()">Save</button>
             <button class="grey-button" id="cancel-course">Cancel</button>
         </span>
     </div>
 </template>
 
 <script>
+    import Course from "../models/Course";
+
     export default {
         name: "AddCourseForm",
         data: () => {
             return {
-                showAddCourseForm: false
+                showAddCourseForm: false,
+                title: "",
+                semester: "",
+                grade: ""   
             }
         },
+        props: {
+            courses: Array
+        },
         methods: {
-          toggleForm: function() {
-              this.showAddCourseForm = !this.showAddCourseForm;
-          }
+            toggleForm: function() {
+                this.showAddCourseForm = !this.showAddCourseForm;
+            },
+            addNewCourse: function() {
+                var coursetitle = this.title
+                var coursesemester = this.semester
+                var coursegrade = this.grade
+            
+                this.courses.push(new Course(coursetitle, coursesemester, coursegrade))
+                this.title = ""
+                this.semester = ""
+                this.grade = ""
+            }   
         }
     };
 </script>

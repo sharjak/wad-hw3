@@ -21,7 +21,7 @@
         </table>
         <br/>
         <br/>
-        <AddCourseForm/>
+        <AddCourseForm :courses="courses"/>
     </div>
 </template>
 
