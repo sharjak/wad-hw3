@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: "CoursesContainer",
+        name: "AddCourseForm",
         data: () => {
             return {
                 showAddCourseForm: false
