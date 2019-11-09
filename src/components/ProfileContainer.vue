@@ -23,11 +23,11 @@
         props: {
             user: Object
         },
-        methods : {
-            formatName : function(firstName, lastName) {
+        methods: {
+            formatName: function (firstName, lastName) {
                 return firstName + ' ' + lastName;
             },
-            formatDate: function(date) {
+            formatDate: function (date) {
                 return date.toLocaleDateString("en-US")
             }
         }

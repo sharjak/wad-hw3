@@ -24,7 +24,7 @@
 
     export default {
         name: "SectionContainer",
-        components : {
+        components: {
             ProfileContainer,
             CoursesContainer
         },

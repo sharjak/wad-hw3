@@ -31,7 +31,7 @@
     export default {
         name: "CoursesContainer",
         components: {
-           AddCourseForm
+            AddCourseForm
         },
         props: {
             courses: Array
@@ -43,7 +43,6 @@
     table {
         width: 100%;
         border-collapse: collapse;
-
     }
 
     table th {
