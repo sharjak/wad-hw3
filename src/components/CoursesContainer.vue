@@ -21,22 +21,18 @@
         </table>
         <br/>
         <br/>
-        <div>
-            <button id="add-course-button" class="blue-button">+</button>
-            <span id="add-course">
-        <input class="input" type="text" placeholder="Course title" id="title"/>
-        <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester"/>
-        <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade"/>
-        <button class="green-button" id="save-course">Save</button>
-        <button class="grey-button" id="cancel-course">Cancel</button>
-      </span>
-        </div>
+        <AddCourseForm/>
     </div>
 </template>
 
 <script>
+    import AddCourseForm from "./AddCourseForm";
+
     export default {
         name: "CoursesContainer",
+        components: {
+           AddCourseForm
+        },
         props: {
             courses: Array
         },
@@ -61,36 +57,5 @@
     table td {
         padding: 8px 12px;
         border: 1px solid #cbcbcb;
-    }
-
-    .blue-button {
-        background-color: #2196F3;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .green-button {
-        background-color: #69f378;
-        color: #ffffff;
-        border: none;
-        padding: 10px 10px;
-    }
-
-    .grey-button {
-        background-color: #e1e8e6;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .input {
-        border: 1px solid #cccccc;
-        padding: 10px 20px;
-        min-width: 135px;
-    }
-
-    #add-course {
-        display: none;
     }
 </style>
