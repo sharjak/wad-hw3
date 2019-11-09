@@ -1,7 +1,7 @@
 <template>
     <main id="app">
         <PageHeader :title="title"/>
-        <SectionContainer :user="user"/>
+        <SectionContainer :user="user" :courses="courses"/>
         <PageFooter :footerLinks="footerLinks"/>
     </main>
 </template>
@@ -12,6 +12,7 @@
     import PageFooter from "./components/PageFooter";
     import FooterLink from "./models/FooterLink";
     import SectionContainer from "./components/SectionContainer";
+    import Course from "./models/Course";
 
     export default {
         name: 'app',
@@ -24,6 +25,12 @@
             return {
                 title: 'Welcome to your dashboard!',
                 user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering', 2.75),
+                courses: [
+                    new Course('Agile software development', 1, 82),
+                    new Course('System modeling', 1, 85),
+                    new Course('Object-oriented programming', 2, 99),
+                    new Course('Estonian language Level A2', 2, 65)
+                ],
                 footerLinks: [
                     new FooterLink('OIS', 'https://ois2.ut.ee/'),
                     new FooterLink('Courses', 'https://courses.cs.ut.ee/')
@@ -51,55 +58,5 @@
         position: relative;
         min-height: 100%;
         padding-bottom: 110px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-
-    }
-
-    table th {
-        padding: 8px 12px;
-        text-align: left;
-        border: 1px solid #cbcbcb;
-        background-color: #03A9F4;
-        color: #ffffff;
-    }
-
-    table td {
-        padding: 8px 12px;
-        border: 1px solid #cbcbcb;
-    }
-
-    .blue-button {
-        background-color: #2196F3;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .green-button {
-        background-color: #69f378;
-        color: #ffffff;
-        border: none;
-        padding: 10px 10px;
-    }
-
-    .grey-button {
-        background-color: #e1e8e6;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .input {
-        border: 1px solid #cccccc;
-        padding: 10px 20px;
-        min-width: 135px;
-    }
-
-    #add-course {
-        display: none;
     }
 </style>

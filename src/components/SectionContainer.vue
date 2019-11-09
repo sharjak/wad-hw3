@@ -2,17 +2,17 @@
     <section id="container">
         <section id="main">
             <div class="content">
-                <div id="profile-container" class="tab active">
+                <div id="profile-container" class="tab">
                     <ProfileContainer :user="user"/>
                 </div>
-                <div id="courses-container" class="tab">
-                    <CoursesContainer />
+                <div id="courses-container" class="tab active">
+                    <CoursesContainer :courses="courses"/>
                 </div>
             </div>
 
             <div class="controls">
-                <button id="profile-button" class="pill active">Profile</button>
-                <button id="courses-button" class="pill">Courses</button>
+                <button id="profile-button" class="pill">Profile</button>
+                <button id="courses-button" class="pill active">Courses</button>
             </div>
         </section>
     </section>
