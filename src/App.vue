@@ -1,41 +1,23 @@
 <template>
     <main id="app">
         <PageHeader :title="title"/>
-        <section id="container">
-            <section id="main">
-                <div class="content">
-                    <div id="profile-container" class="tab active">
-                        <ProfileContainer :user="user"/>
-                    </div>
-                    <div id="courses-container" class="tab">
-                        <CoursesContainer />
-                    </div>
-                </div>
-
-                <div class="controls">
-                    <button id="profile-button" class="pill active">Profile</button>
-                    <button id="courses-button" class="pill">Courses</button>
-                </div>
-            </section>
-        </section>
+        <SectionContainer :user="user"/>
         <PageFooter :footerLinks="footerLinks"/>
     </main>
 </template>
 
 <script>
     import PageHeader from "./components/PageHeader";
-    import ProfileContainer from "./components/ProfileContainer";
-    import CoursesContainer from "./components/CoursesContainer";
     import User from "./models/User";
     import PageFooter from "./components/PageFooter";
     import FooterLink from "./models/FooterLink";
+    import SectionContainer from "./components/SectionContainer";
 
     export default {
         name: 'app',
         components: {
             PageHeader,
-            ProfileContainer,
-            CoursesContainer,
+            SectionContainer,
             PageFooter
         },
         data: () => {
@@ -71,20 +53,6 @@
         padding-bottom: 110px;
     }
 
-    #container {
-        width: 80%;
-        max-width: 900px;
-        min-width: 320px;
-        padding: 15px;
-        background-color: #ffffff;
-        margin: 0 auto;
-    }
-
-    .content {
-        padding: 10px;
-        border: 1px solid #cbcbcb;
-    }
-
     table {
         width: 100%;
         border-collapse: collapse;
@@ -102,34 +70,6 @@
     table td {
         padding: 8px 12px;
         border: 1px solid #cbcbcb;
-    }
-
-    .content .tab {
-        display: none;
-    }
-
-    .content .tab.active {
-        display: block;
-    }
-
-    .controls .pill {
-        border: 1px solid #cbcbcb;
-        background-color: #eaeaea;
-        padding: 10px;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        border-top: none;
-        margin-top: -1px;
-        outline: none !important;
-    }
-
-    .controls .pill.active {
-        background-color: #ffffff;
-        border-top: 1px solid #ffffff;
-    }
-
-    .controls .pill:hover {
-        cursor: pointer;
     }
 
     .blue-button {
