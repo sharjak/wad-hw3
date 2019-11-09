@@ -1,11 +1,11 @@
 <template>
     <main id="app">
-        <PageHeader title="Welcome to your dashboard!"/>
+        <PageHeader :title="title"/>
         <section id="container">
             <section id="main">
                 <div class="content">
                     <div id="profile-container" class="tab active">
-                        <ProfileContainer/>
+                        <ProfileContainer :user="user"/>
                     </div>
                     <div id="courses-container" class="tab">
                         <CoursesContainer />
@@ -35,6 +35,7 @@
     import PageHeader from "./components/PageHeader";
     import ProfileContainer from "./components/ProfileContainer";
     import CoursesContainer from "./components/CoursesContainer";
+    import User from "./models/User";
 
     export default {
         name: 'app',
@@ -42,6 +43,12 @@
             PageHeader,
             ProfileContainer,
             CoursesContainer
+        },
+        data: () => {
+            return {
+                title: 'Welcome to your dashboard!',
+                user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering', 2.75)
+            }
         }
     }
 </script>
