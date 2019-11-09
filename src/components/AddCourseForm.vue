@@ -5,7 +5,7 @@
             <input class="input" type="text" placeholder="Course title" id="title" v-model="title"/>
             <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester" v-model="semester"/>
             <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade" v-model="grade"/>
-            <button class="green-button" id="save-course" @click="addNewCourse()">Save</button>
+            <button class="green-button" id="save-course" @click="addNewCourse(); toggleForm()">Save</button>
             <button class="grey-button" id="cancel-course">Cancel</button>
         </span>
     </div>
@@ -40,6 +40,7 @@
                 this.title = ""
                 this.semester = ""
                 this.grade = ""
+                //toggleForm()
             }   
         }
     };
