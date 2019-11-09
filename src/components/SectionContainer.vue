@@ -2,17 +2,17 @@
     <section id="container">
         <section id="main">
             <div class="content">
-                <div id="profile-container" class="tab">
+                <div id="profile-container" class="tab" v-bind:class="{ active: isActive('profile') }">
                     <ProfileContainer :user="user"/>
                 </div>
-                <div id="courses-container" class="tab active">
+                <div id="courses-container" class="tab" v-bind:class="{ active: isActive('courses') }">
                     <CoursesContainer :courses="courses"/>
                 </div>
             </div>
 
             <div class="controls">
-                <button id="profile-button" class="pill">Profile</button>
-                <button id="courses-button" class="pill active">Courses</button>
+                <button id="profile-button" class="pill" @click.prevent="setActive('profile')" v-bind:class="{ active: isActive('profile') }">Profile</button>
+                <button id="courses-button" class="pill" @click.prevent="setActive('courses')" v-bind:class="{ active: isActive('courses') }">Courses</button>
             </div>
         </section>
     </section>
@@ -24,6 +24,11 @@
 
     export default {
         name: "SectionContainer",
+        data: () => {
+            return {
+                activeContainer: 'profile'
+            }
+        },
         components: {
             ProfileContainer,
             CoursesContainer
@@ -31,6 +36,14 @@
         props: {
             user: Object,
             courses: Array
+        },
+        methods: {
+            isActive: function(container) {
+                return this.activeContainer === container
+            },
+            setActive: function(container) {
+                this.activeContainer = container
+            }
         }
     }
 </script>
