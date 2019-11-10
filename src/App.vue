@@ -1,7 +1,7 @@
 <template>
     <main id="app">
         <PageHeader :title="title"/>
-        <SectionContainer :user="user" :courses="courses"/>
+        <SectionContainer :user="user" :courses="courses" :calculateGPA="calculateGPA"/>
         <PageFooter :footerLinks="footerLinks"/>
     </main>
 </template>
@@ -24,7 +24,7 @@
         data: () => {
             return {
                 title: 'Welcome to your dashboard!',
-                user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering', 2.75),
+                user: new User('John', 'Doe', new Date(1990, 10, 10), 'Software Engineering'),
                 courses: [
                     new Course('Agile software development', 1, 82),
                     new Course('System modeling', 1, 85),
@@ -35,6 +35,25 @@
                     new FooterLink('OIS', 'https://ois2.ut.ee/'),
                     new FooterLink('Courses', 'https://courses.cs.ut.ee/')
                 ]
+            }
+        },
+        methods: {
+            calculateGPA: function() {
+                var sum = 0
+
+                for (let i = 0; i < this.courses.length; i++) {
+                    var grade = this.courses[i].grade
+                    //console.log(grade)
+                    if (grade > 90) sum += 4;
+                    else if (grade > 80) sum += 3;
+                    else if (grade > 70) sum += 2;
+                    else if (grade > 60) sum += 1;
+                    else if (grade > 50) sum += 0.5;
+                }
+
+                var GPA = Math.round((sum / this.courses.length) * 100) / 100
+                this.user.gpa = GPA
+                return GPA
             }
         }
     }

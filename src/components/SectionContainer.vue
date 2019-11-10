@@ -3,7 +3,7 @@
         <section id="main">
             <div class="content">
                 <div id="profile-container" class="tab" v-bind:class="{ active: isActive('profile') }">
-                    <ProfileContainer :user="user"/>
+                    <ProfileContainer :user="user" :calculateGPA="calculateGPA"/>
                 </div>
                 <div id="courses-container" class="tab" v-bind:class="{ active: isActive('courses') }">
                     <CoursesContainer :courses="courses"/>
@@ -35,7 +35,8 @@
         },
         props: {
             user: Object,
-            courses: Array
+            courses: Array,
+            calculateGPA: Function
         },
         methods: {
             isActive: function(container) {

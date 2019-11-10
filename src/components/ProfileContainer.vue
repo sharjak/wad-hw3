@@ -11,17 +11,20 @@
             </ul>
         </div>
         <div id="gpa">
-            <strong>{{user.gpa}}</strong>
+            <strong>{{ calculateGPA() }}</strong>
         </div>
         <div class="clear-fix"></div>
     </div>
 </template>
 
 <script>
+    //import Course from "../models/Course";
+
     export default {
         name: "ProfileContainer",
         props: {
-            user: Object
+            user: Object,
+            calculateGPA: Function
         },
         methods: {
             formatName: function (firstName, lastName) {
